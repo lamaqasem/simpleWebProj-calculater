@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div
+{
+ width: fit-contant ;
+ margin:50px;
+ padding:30px;
+ text-align : center ; 
+ background-color : LightGray;
+ border: 2px solid DodgerBlue;
+ border-radius: 12px;
+}
+button 
+{
+  background-color: DodgerBlue; 
+  border: none; 
+  color: white; 
+  padding: 10px 24px; 
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  margin: 4px 2px; 
+  transition: all 0.3s ease 0s;
+  cursor: pointer; 
+  border-radius: 5px;
+}
+
+button:hover 
+{
+  background-color: Gray; 
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19); 
+}
+
+input[type="text"] 
+{
+  padding: 6px 10px; 
+  margin: 5px 0;
+  display: inline-block; 
+  border: 1px solid #ccc; 
+  border-radius: 7px;
+  transition: border 0.3s ease-in-out; 
+}
+
+input[type="text"]:focus 
+{
+  border-color: DodgerBlue; 
+  outline: none; 
+}
+
+h1 
+{
+  text-align: center; 
+  margin-bottom: 18px; 
+}
+
+</style>
+</head>
+<body>
+
+<div>
+<h1>Calculator</h1>
+
+<form>
+  <label for="x">X</label>
+  <input type="text" id="x" placeholder="enter the first number"><br><br>
+  <label for="y">Y</label>
+  <input type="text" id="y" placeholder="enter the second number"><br><br>
+  
+  <p>Choose one of the following operations </p>
+  <button type="button" onclick="sum()">Sum</button>
+  <button type="button" onclick="multiply()">Multiple</button>
+  <br><br>
+  <label for="res">" The Result "</label><br>
+  <input type="text" id="res" readonly><br><br> 
+  
+  <button type="button" id="lockButton" onclick="toggleLock()">Lock</button>
+
+
+</form>
+</div>
+<script>
+function sum() 
+{
+  var x = document.getElementById("x").value;
+  var y = document.getElementById("y").value;
+  var result = parseFloat(x) + parseFloat(y);
+  if (!isNaN(result)) 
+  {
+    document.getElementById("res").value = result;
+  }
+}
+
+function multiply() 
+{
+  var x = document.getElementById("x").value;
+  var y = document.getElementById("y").value;
+  var result = parseFloat(x) * parseFloat(y);
+  if (!isNaN(result)) 
+  {
+    document.getElementById("res").value = result;
+  }
+}
+
+function toggleLock() 
+{
+  var xInput = document.getElementById('x');
+  var yInput = document.getElementById('y');
+
+  if (xInput.disabled) 
+  {
+    xInput.disabled = false;
+    yInput.disabled = false;
+    document.getElementById('lockButton').innerText = 'Lock';
+  } 
+  
+  else 
+  {
+    xInput.disabled = true;
+    yInput.disabled = true;
+    document.getElementById('lockButton').innerText = 'Unlock';
+  }
+}
+
+</script>
+</body>
+</html>
+
